@@ -1,0 +1,62 @@
+
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{csvsimple}
+\usepackage{makecell}
+
+
+% MWE del csvsimple per a fer una taula 
+
+% Per a la taula donada, les opcions són
+% \lambda, \delta, \interpguio, \interpminsq, \n
+% totes autoexplicatives
+
+
+% Canviant el nom de la taula per
+% ../4/OUT/TBL/cd.csv
+% carreguem la del cadmi
+
+
+%
+% Detall, t'he donat totes les dades en una unic arxiu,
+% però no cal que es posin totes en una taula, en podries
+% crear una amb els indexs de refraccio, una amb les
+% interpolacions... com tu creguis!
+
+\begin{document}
+
+\begin{table}[!h]
+\renewcommand{\arraystretch}{1.3}
+\centering
+\begin{tabular}{c c c c}
+    \hline 
+
+
+    Longitud d'ona [$\mathring A$] & 
+    Índex de refracció &
+    Desviació mínima [º] &
+    \thead{Interpolació de $\lambda$ per\\
+            mínims quadrats [$\mathring A$]}
+
+
+    \\
+    \hline
+
+    %aquí canvies els \loquesigui per a que es mostrin
+    % i el nom de l'arxiu
+    \csvreader[head to column names]{../4/OUT/TBL/hg.csv}{}
+      {\lambda & \n & \delta & \interpminsq \\}
+
+
+    & \\[-3ex]
+
+    \hline
+
+\end{tabular}
+\caption{Taula que demostra que la Irina és un panda}
+\label{tab:panda}
+\end{table}
+
+
+
+\end{document}
